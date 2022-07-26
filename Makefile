@@ -3,4 +3,4 @@ swap_manager: dashboard.c
 
 install:
 	sudo cp mkswap.sh /bin/
-	cp SwapManager/bin/
+	sudo cp SwapManager /bin/
