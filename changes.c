@@ -12,13 +12,19 @@ void apply(GtkWidget* widget, gpointer data){
     int fp = 0;
     struct apply_changes_args *passed = data;
     int status;
-    fp = system("pkexec bash /bin/mkswap.sh");
-    if (fp == -1)
-        printf("errored");
-    else
+    if(fork() == 0)
     {
-        //
+        fp = execl("pkexec","pkexec","bash","/bin/mkswap.sh",
+        create_swap->size,create_swap->location,NULL);
+        if (fp == -1){
+            printf("errored %s",strerror(errno));
+        }
+        else{
+            printf("Changes applied successfully")
+        }
     }
+        
+
 }
 
 void discard(GtkWidget* widget, gpointer data){
