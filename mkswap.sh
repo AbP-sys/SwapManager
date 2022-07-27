@@ -1,5 +1,7 @@
 #!bin/bash
 
+loc="$2/swapfile"
+echo "$1 $loc"
 #dd if=/dev/zero of=$2 bs=1G count=$1
 #chmod 600 $2
 #mkswap $2

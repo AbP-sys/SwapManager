@@ -7,20 +7,21 @@ struct apply_changes_args
     char *location;
 }*create_swap;
 
-void apply(GtkWidget* widget, gpointer data){
+void apply(GtkWidget* widget, gpointer scale){
     // callback function to apply changes
     int fp = 0;
-    struct apply_changes_args *passed = data;
-    int status;
+    create_swap->size = gtk_range_get_value((GtkRange *)scale);
     if(fork() == 0)
     {
-        fp = execl("pkexec","pkexec","bash","/bin/mkswap.sh",
-        create_swap->size,create_swap->location,NULL);
+        char numstring[3];
+        snprintf(numstring, 5, "%d", (int)create_swap->size);
+        fp = execlp("bash","bash","/bin/mkswap.sh",
+        numstring,create_swap->location,NULL);
         if (fp == -1){
             printf("errored %s",strerror(errno));
         }
         else{
-            printf("Changes applied successfully")
+            printf("Changes applied successfully");
         }
     }
         
