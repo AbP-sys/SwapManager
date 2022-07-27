@@ -73,7 +73,6 @@ int main(int argc, char* argv[]){
     GtkWidget* open = gtk_button_new_from_icon_name ("document-open",GTK_ICON_SIZE_BUTTON);
     cb_data = g_new0(struct cb_data, 1);    //store arguments in a struct for passing into the callback function
     create_swap = g_new0(struct apply_changes_args, 1);
-    create_swap->size = gtk_range_get_value((GtkRange *)scale);
     cb_data->window = window;
     cb_data->loc_buffer = loc_buffer;
     cb_data->apply = create_swap;
@@ -85,7 +84,7 @@ int main(int argc, char* argv[]){
     gtk_grid_attach (GTK_GRID (grid), button1, 2, 3, 1, 1);  
 
     button = gtk_button_new_with_label("Apply changes");
-    g_signal_connect(G_OBJECT(button), "clicked", G_CALLBACK(apply), "button");
+    g_signal_connect(G_OBJECT(button), "clicked", G_CALLBACK(apply), scale);
     gtk_grid_attach (GTK_GRID (grid), button, 3, 3, 1, 1); 
  
     gtk_widget_show_all(window);
