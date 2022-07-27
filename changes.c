@@ -10,11 +10,11 @@ struct apply_changes_args
 void apply(GtkWidget* widget, gpointer scale){
     // callback function to apply changes
     int fp = 0;
-    //create_swap->size = gtk_range_get_value((GtkRange *)scale);
+    create_swap->size = gtk_range_get_value((GtkRange *)scale);
     if(fork() == 0)
     {
-        char numstring[2];
-        snprintf(numstring, 5, "%d", (int)create_swap->size); 
+        char numstring[3];
+        snprintf(numstring, 3, "%d", (int)create_swap->size); 
         fp = execl("pkexec","pkexec","bash","/bin/mkswap.sh",
         numstring,create_swap->location,NULL); 
         if (fp == -1){
