@@ -51,7 +51,7 @@ int main(int argc, char* argv[]){
     gtk_grid_attach (GTK_GRID (grid), scale, 0, 0, 4, 1);
 
     provider = gtk_css_provider_new();                                                              
-    gtk_css_provider_load_from_path(provider, "mystyles.css", NULL);                                 
+    gtk_css_provider_load_from_path(provider, "/etc/SwapManager/mystyles.css", NULL);                                 
     context = gtk_widget_get_style_context(GTK_WIDGET(window));                                     
     gtk_style_context_add_provider(context, GTK_STYLE_PROVIDER(provider), GTK_STYLE_PROVIDER_PRIORITY_USER);
     context = gtk_widget_get_style_context(GTK_WIDGET(scale));                                      

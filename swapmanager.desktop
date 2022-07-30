@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Swap Manager
+StartupWMClass=SwapManager
+Comment=Create and manage swap space.
+GenericName=Internet Messenger
+Exec=/usr/bin/SwapManager
+#Icon=
+Type=Application
+Categories=System;Disk;
+Path=/usr/bin
+Path=/usr/bin
