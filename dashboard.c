@@ -66,7 +66,7 @@ int main(int argc, char* argv[]){
 
     create_label("location: ",0,2,1,1,grid,1); 
     
-    loc_buffer = gtk_entry_buffer_new ("/swapfile",9);
+    loc_buffer = gtk_entry_buffer_new ("/",9);
     button2 = gtk_entry_new_with_buffer(loc_buffer);
     gtk_grid_attach (GTK_GRID (grid), button2, 1, 2, 2, 1);
    
@@ -76,6 +76,7 @@ int main(int argc, char* argv[]){
     cb_data->window = window;
     cb_data->loc_buffer = loc_buffer;
     cb_data->apply = create_swap;
+    create_swap->location = "/";    //set default location
     g_signal_connect(G_OBJECT(open), "clicked", G_CALLBACK(set_location),cb_data);
     gtk_grid_attach (GTK_GRID (grid), open, 3, 2, 1, 1);  
 
