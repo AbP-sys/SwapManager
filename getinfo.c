@@ -6,7 +6,8 @@ struct memory
 };
 char get_suffix(char *path)
 {
-    return path[strlen(path)-2]; //suffix
+    //suffix
+    return path[strlen(path)-2]; 
 }
 
 double get_prefix(char *path)
@@ -23,12 +24,12 @@ double get_prefix(char *path)
 
 void get_current_swap(struct memory *current)
 {
+    /* Handle error */
     FILE *fp;
     int status;
     char path[PATH_MAX];
     fp = popen("swapon | tail -n +2 | awk '{print $3}'","r");
-    if (fp == NULL)
-        /* Handle error */;
+    if (fp == NULL);
     else
     {
         fgets(path,PATH_MAX,fp);
@@ -41,12 +42,12 @@ void get_current_swap(struct memory *current)
 
 void get_system_memory(struct memory *current)
 {
+    /* Handle error */
     FILE *fp;
     int status;
     char path[PATH_MAX];
     fp = popen("free -m | awk 'NR==2{print}' | awk '{print $2}'","r");
-    if (fp == NULL)
-        /* Handle error */;
+    if (fp == NULL);
     else
     {
         fgets(path,PATH_MAX,fp);

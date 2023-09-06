@@ -9,6 +9,7 @@ struct apply_changes_args
 
 void apply(GtkWidget* widget, gpointer scale){
     // callback function to apply changes
+    
     int fp = 0;
     create_swap->size = gtk_range_get_value((GtkRange *)scale);
     if(fork() == 0)
@@ -29,6 +30,7 @@ void apply(GtkWidget* widget, gpointer scale){
 }
 
 void discard(GtkWidget* widget, gpointer data){
-    // callback function to discard changes
+
     g_print("Changes discarded\n");
+    // callback function to discard changes
 }
